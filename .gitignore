@@ -1,0 +1,23 @@
+# Gradle / Android build output
+build/
+.gradle/
+.cxx/
+.externalNativeBuild/
+/captures/
+
+# Local machine config — contains the absolute path to YOUR Android SDK.
+local.properties
+
+# IDE
+*.iml
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Never commit signing material or a real partner key.
+*.jks
+*.keystore
+keystore.properties
+secrets.properties

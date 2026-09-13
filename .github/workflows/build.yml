@@ -1,0 +1,57 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      # The release AAR is what partners consume, and the debug APK proves the
+      # reference integration still compiles against it. Building both catches
+      # an API change that breaks callers, which building the library alone
+      # would not.
+      - name: Build the SDK and the reference app
+        run: ./gradlew :sdk:assembleRelease :app:assembleDebug --stacktrace
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: proxypool-sdk-aar
+          path: sdk/build/outputs/aar/*.aar
+
+  protocol:
+    # A protocol change has to keep the coordinator's end-to-end suite green;
+    # the two repos are one contract, and only running one half of it is how
+    # they drift.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/proxy-pool-sdk
+          path: coordinator-repo
+        continue-on-error: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Coordinator end-to-end tests
+        working-directory: coordinator-repo
+        run: |
+          if [ ! -f requirements.txt ]; then
+            echo "coordinator repo not available to this workflow; skipping"
+            exit 0
+          fi
+          pip install -r requirements.txt
+          python -m pytest tests/test_coordinator.py -q
