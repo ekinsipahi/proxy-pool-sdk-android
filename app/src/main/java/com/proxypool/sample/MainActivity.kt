@@ -82,17 +82,19 @@ class MainActivity : Activity() {
             textSize = 24f
         })
 
+        // The paragraph is one unbroken line on purpose: `trimIndent()` keeps
+        // the newlines a source file uses to stay inside 100 columns, and on a
+        // phone those become hard breaks in the middle of sentences. Let the
+        // TextView wrap it; only the bullet list keeps its own line breaks.
         root.addView(TextView(this).apply {
-            text = """
-                With your permission this device will carry other people's web
-                requests while it is idle, acting as an exit point on the Proxy
-                Pool network. Your app keeps working normally.
-
-                • Only web traffic (ports 80 and 443), never your own data
-                • Nothing you type, store or browse is read or sent
-                • You can turn this off at any time, and it stops immediately
-            """.trimIndent()
+            text = "With your permission this device will carry other people's web requests " +
+                "while it is idle, acting as an exit point on the Proxy Pool network. " +
+                "Your app keeps working normally.\n\n" +
+                "•  Only web traffic (ports 80 and 443), never your own data\n" +
+                "•  Nothing you type, store or browse is read or sent\n" +
+                "•  You can turn this off at any time, and it stops immediately"
             textSize = 15f
+            setLineSpacing(0f, 1.15f)
             setPadding(0, dp(16), 0, dp(24))
         })
 

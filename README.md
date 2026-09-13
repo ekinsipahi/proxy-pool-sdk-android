@@ -108,8 +108,14 @@ notification is shown the whole time it is sharing, and tapping that
 notification opens your app so the off switch is always one tap away.
 
 [`docs/disclosure.md`](docs/disclosure.md) has copy you can adapt and the four
-things that must be true. [`app/`](app/) is a working reference screen. **Read
-one of them before you write your own.**
+things that must be true. [`app/`](app/) is a working reference screen — this is
+it, running:
+
+<p align="center">
+  <img src="docs/assets/demo-app.png" alt="The reference consent screen, connected" width="300">
+</p>
+
+**Read one of them before you write your own.**
 
 ## What it does not do
 
