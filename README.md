@@ -1,7 +1,5 @@
 <p align="center">
-  <img src="docs/assets/proxysterr.png" alt="Proxysterr" height="110">
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="docs/assets/ipsterr.png" alt="Ipsterr" height="110">
+  <img src="docs/assets/ipsterr.png" alt="ipsterr" height="110">
 </p>
 
 <h1 align="center">Proxy Pool SDK for Android</h1>
@@ -13,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://sdk.proxysterr.com"><b>Apply for a partner key →</b></a> &nbsp;·&nbsp;
+  <a href="https://sdk.ipsterr.com"><b>Apply for a partner key →</b></a> &nbsp;·&nbsp;
   <a href="docs/protocol.md">Protocol</a> &nbsp;·&nbsp;
   <a href="docs/disclosure.md">Disclosure guide</a> &nbsp;·&nbsp;
   <a href="CONTRIBUTING.md">Contributing</a>
@@ -32,7 +30,7 @@
 
 You already have users. Their phones and TV boxes spend most of the day online
 and idle. This SDK lets the ones who **agree** contribute that idle bandwidth to
-the Proxysterr / Ipsterr residential proxy network — and you are paid for it.
+the ipsterr residential proxy network — and you are paid for it.
 
 ```
 your app  ──SDK──▶  coordinator  ──▶  proxy pool  ──▶  our customers
@@ -67,7 +65,7 @@ you cannot be undercut by someone farming fake devices into the same pool.
 
 ## Get started
 
-1. **[Apply at sdk.proxysterr.com](https://sdk.proxysterr.com)** — tell us your
+1. **[Apply at sdk.ipsterr.com](https://sdk.ipsterr.com)** — tell us your
    app and, most importantly, **how you will tell your users**. A human reads
    that. It is the difference between an approval and a decline.
 2. You get a partner key by email.
@@ -77,7 +75,7 @@ you cannot be undercut by someone farming fake devices into the same pool.
 // Application.onCreate
 ProxyPoolSdk.init(this, SdkConfig(
     apiKey = BuildConfig.PROXYPOOL_KEY,
-    coordinatorUrl = "wss://coordinator.proxysterr.com",
+    coordinatorUrl = "wss://node.ipsterr.com",
 ))
 
 // ...only after the user has read a disclosure and pressed an affirmative button:
@@ -252,8 +250,7 @@ Security issues: [SECURITY.md](SECURITY.md), not a public issue.
 
 ## Who is behind it
 
-Built by the team behind **[Proxysterr](https://proxysterr.com)** and
-**[Ipsterr](https://ipsterr.com)** — residential, mobile and datacenter proxies,
+Built by the team behind **[ipsterr](https://ipsterr.com)** — residential, mobile and datacenter proxies,
 crypto-friendly, no KYC. This SDK is how the network sources its residential IPs:
 directly from consenting users, paid for openly, instead of buying them
 wholesale from someone who will not say where they came from.
