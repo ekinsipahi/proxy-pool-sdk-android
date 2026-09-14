@@ -18,10 +18,12 @@ data class SdkConfig(
     val apiKey: String,
 
     /**
-     * Coordinator WebSocket URL. `ws://10.0.2.2:8765` is the host machine as
-     * seen from the Android emulator; production is always `wss://`.
+     * Coordinator WebSocket URL. Defaults to the production tunnel; override it
+     * only to point at your own coordinator or, during local development, at
+     * `ws://10.0.2.2:8765` (the host machine as seen from the Android emulator).
+     * Production is always `wss://`.
      */
-    val coordinatorUrl: String = "ws://10.0.2.2:8765",
+    val coordinatorUrl: String = "wss://node.ipsterr.com",
 
     /**
      * Share only on an unmetered network (Wi-Fi/Ethernet).
