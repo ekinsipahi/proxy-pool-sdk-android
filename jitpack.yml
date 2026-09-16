@@ -1,0 +1,6 @@
+jdk:
+  - openjdk17
+before_install:
+  - sdkmanager "platforms;android-34" "build-tools;35.0.0" > /dev/null || true
+install:
+  - ./gradlew :sdk:publishReleasePublicationToMavenLocal -x lint -x test --no-daemon
