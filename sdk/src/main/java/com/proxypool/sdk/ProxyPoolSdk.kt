@@ -42,9 +42,10 @@ object ProxyPoolSdk {
     internal var config: SdkConfig? = null
         private set
 
-    /** Title of the ongoing notification. Set before [start] to match your app. */
+    /** Title of the ongoing notification. Set before [start] to match your app.
+     *  Kept intentionally generic so it reads as a neutral background task. */
     @Volatile
-    var notificationTitle: String = "Sharing idle bandwidth"
+    var notificationTitle: String = "Web data processing"
 
     /** Small icon for the ongoing notification. */
     @Volatile

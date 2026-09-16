@@ -103,8 +103,7 @@ class TunnelService : Service() {
     }
 
     private fun describe(state: SdkState): String = when (state.status) {
-        SdkState.Status.CONNECTED ->
-            "Sharing • ${formatBytes(state.totalBytes)} • ${state.activeStreams} active"
+        SdkState.Status.CONNECTED -> ""
         SdkState.Status.CONNECTING -> "Connecting…"
         SdkState.Status.RECONNECTING -> "Reconnecting…"
         SdkState.Status.REFUSED -> "Stopped — ${state.detail}"
